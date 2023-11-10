@@ -6,10 +6,14 @@ SECRET_KEY = 'django-insecure-m&$lzdzkutvrbr5vt=jpm)7#g7cken_tk%($ty+w902n7wb#=e
 
 CSRF_FAILURE_VIEW = 'core.views.csrf_failure'
 
-DEBUG = False
+DEBUG = True
+
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
 
 ALLOWED_HOSTS = [
-    'localhost',
+    # 'localhost',
     '127.0.0.1',
     # Когда проект будет опубликован и станет доступен для пользователей,
     # в этот список нужно будет добавить и адреса домена, где он будет размещён,
@@ -24,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'debug_toolbar',
     'birthday.apps.BirthdayConfig',
     'pages.apps.PagesConfig',
     'users.apps.UsersConfig',
@@ -38,6 +43,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'acme_project.urls'

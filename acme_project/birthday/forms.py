@@ -1,5 +1,5 @@
 from django import forms
-from .models import Birthday
+from .models import Birthday, Congratulation
 from django.core.exceptions import ValidationError
 
 

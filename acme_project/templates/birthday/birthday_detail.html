@@ -1,8 +1,19 @@
 {% extends "base.html" %}
+{% load django_bootstrap5 %}
 
 {% block content %}
-  ID записи: {{ object.id }} </br>
+  ID записи: {{ object.id }} <br>
   Автор: {{ object.author.first_name }} {{ object.author.last_name }}
+  <div>
+  {% with all_tags=birthday.tags.all %}
+          <!-- Если у записи есть хоть один тег -->
+    {% if all_tags %}
+            <!-- Выводим теги через запятую, самую первую букву делаем заглавной -->
+      {{ all_tags|join:", "|lower|capfirst }} автора
+
+    {% endif %}
+  {% endwith %}
+  </div>
   <hr>
   {% if birthday.image %}
     <div>
